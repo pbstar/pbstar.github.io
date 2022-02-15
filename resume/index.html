@@ -23,15 +23,6 @@
             background-color: #fff;
         }
 
-        .body img {
-            width: 100%;
-        }
-
-        .btnb {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
 
         @media screen and (min-width: 900px) {
             .body {
@@ -41,18 +32,7 @@
                 border-radius: 5px;
             }
 
-            .btnbox {
-                position: fixed;
-                bottom: 20px;
-                right: 50%;
-                margin-right: -500px;
-                font-size: 12px;
-            }
 
-            .btnbox img {
-                width: 32px;
-                height: 32px;
-            }
         }
 
         @media screen and (max-width: 899px) {
@@ -61,12 +41,93 @@
                 box-shadow: 0 0 4px 1px rgba(192, 192, 192, 0.466);
                 border-radius: 3px;
             }
+        }
 
+        @media screen and (min-width: 1030px) {
+            .btnbox {
+                position: fixed;
+                bottom: 20px;
+                right: 50%;
+                margin-right: -500px;
+                font-size: 12px;
+            }
+
+            .btnb {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 50px;
+                height: 50px;
+                border-radius: 25px;
+                background-color: rgb(106, 175, 255);
+                color: #fff;
+                margin-top: 10px;
+                cursor: pointer;
+                position: relative;
+            }
+
+            .btnb span {
+                display: none;
+                font-weight: 800;
+            }
+
+            .btnb .btnImg {
+                width: 32px;
+                height: 32px;
+            }
+
+            .btnb .btnmimg {
+                display: none;
+                width: 100px;
+                position: absolute;
+                left: -115px;
+            }
+
+            .btnb:hover .btnmimg {
+                display: block;
+            }
+
+            .btnb:hover span {
+                display: block;
+            }
+
+            .btnb:hover .btnImg {
+                display: none;
+            }
+
+        }
+
+        @media screen and (max-width: 1029px) {
             .btnbox {
                 position: fixed;
                 bottom: 20px;
                 right: 20px;
-                font-size: 12px;
+            }
+
+            .btnb {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 50px;
+                height: 50px;
+                border-radius: 25px;
+                background-color: rgb(106, 175, 255);
+                color: #fff;
+                margin-top: 10px;
+            }
+
+            .btnb span {
+                display: none;
+            }
+
+            .btnb .btnImg {
+                width: 32px;
+                height: 32px;
+            }
+
+            .mshow {
+                display: none;
             }
         }
     </style>
@@ -76,16 +137,31 @@
     <div class="body">
         <!-- <img src="./1.png" alt=""> -->
         <div class="btnbox">
-            <div class="btnb">
-                <img src="../images/resume/moble.png" alt="">
-                <p>手机查看</p>
+            <div class="btnb mshow">
+                <img class="btnImg" src="../images/resume/moble.png" alt="">
+                <span>手机</span>
+                <span>查看</span>
+                <img class="btnmimg" src="../images/resume/code.png" alt="">
             </div>
-            <div class="btnb">
-                <img src="../images/resume/down.png" alt="">
-                <p>下载文件</p>
+            <div class="btnb" id="down">
+                <img class="btnImg" src="../images/resume/down.png" alt="">
+                <span>下载</span>
+                <span>文件</span>
             </div>
         </div>
     </div>
+    <script>
+        var down = document.getElementById("down");
+        down.onclick = function () {
+            var elt = document.createElement('a');
+            elt.setAttribute('href', './1.png');
+            elt.setAttribute('download', 'file.png');
+            elt.style.display = 'none';
+            document.body.appendChild(elt);
+            elt.click();
+            document.body.removeChild(elt);
+        }
+    </script>
 </body>
 
 </html>
