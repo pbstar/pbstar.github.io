@@ -47,7 +47,7 @@
         @media screen and (min-width: 1030px) {
             .btnbox {
                 position: fixed;
-                bottom: 20px;
+                bottom: 50px;
                 right: 50%;
                 margin-right: -500px;
                 font-size: 12px;
@@ -66,6 +66,7 @@
                 margin-top: 10px;
                 cursor: pointer;
                 position: relative;
+                box-shadow: 0 0 4px 1px rgba(211, 211, 211, 0.4);
             }
 
             .btnb span {
@@ -116,6 +117,7 @@
                 background-color: rgb(106, 175, 255);
                 color: #fff;
                 margin-top: 10px;
+                box-shadow: 0 0 4px 1px rgba(211, 211, 211, 0.4);
             }
 
             .btnb span {
@@ -138,6 +140,11 @@
     <div class="body">
         <img style="width: 100%;" src="./1.png" alt="">
         <div class="btnbox">
+            <div class="btnb" id="totop" style="display: none;">
+                <img class="btnImg" src="../images/resume/totop.png" alt="">
+                <span>返回</span>
+                <span>顶部</span>
+            </div>
             <div class="btnb mshow">
                 <img class="btnImg" src="../images/resume/moble.png" alt="">
                 <span>手机</span>
@@ -153,6 +160,15 @@
     </div>
     <script>
         var down = document.getElementById("down");
+        var totop = document.getElementById("totop");
+        window.addEventListener("scroll", function (event) {
+            var scrollTop = document.documentElement.scrollTop;
+            if (scrollTop > 500) {
+                totop.style.display = 'flex'
+            } else {
+                totop.style.display = 'none'
+            }
+        });
         down.onclick = function () {
             var elt = document.createElement('a');
             elt.setAttribute('href', './1.png');
@@ -161,6 +177,18 @@
             document.body.appendChild(elt);
             elt.click();
             document.body.removeChild(elt);
+        }
+        totop.onclick = function () {
+            cancelAnimationFrame(timer);
+            var timer = requestAnimationFrame(function fn () {
+                var scrollTop = document.documentElement.scrollTop;
+                if (scrollTop > 0) {
+                    document.documentElement.scrollTop = scrollTop - 50;
+                    timer = requestAnimationFrame(fn);
+                } else {
+                    cancelAnimationFrame(timer);
+                }
+            });
         }
     </script>
 </body>
