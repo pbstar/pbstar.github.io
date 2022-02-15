@@ -8,137 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/favicon.png" sizes="16x16" type="image/x-icon">
     <title>彭勃</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            min-height: 100%;
-            background: linear-gradient(rgb(166, 208, 255), rgb(242, 251, 255));
-        }
-
-        .body {
-            /* height: 2000px; */
-            background-color: #fff;
-        }
-
-
-        @media screen and (min-width: 900px) {
-            .body {
-                margin: 20px auto;
-                width: 880px;
-                box-shadow: 0 0 5px 1px rgba(184, 184, 184, 0.459);
-                border-radius: 5px;
-            }
-
-
-        }
-
-        @media screen and (max-width: 899px) {
-            .body {
-                margin: 10px;
-                box-shadow: 0 0 4px 1px rgba(192, 192, 192, 0.466);
-                border-radius: 3px;
-            }
-        }
-
-        @media screen and (min-width: 1030px) {
-            .btnbox {
-                position: fixed;
-                bottom: 50px;
-                right: 50%;
-                margin-right: -500px;
-                font-size: 12px;
-            }
-
-            .btnb {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                width: 50px;
-                height: 50px;
-                border-radius: 25px;
-                background-color: rgb(106, 175, 255);
-                color: #fff;
-                margin-top: 10px;
-                cursor: pointer;
-                position: relative;
-                box-shadow: 0 0 4px 1px rgba(211, 211, 211, 0.4);
-            }
-
-            .btnb span {
-                display: none;
-                font-weight: 800;
-            }
-
-            .btnb .btnImg {
-                width: 32px;
-                height: 32px;
-            }
-
-            .btnb .btnmimg {
-                display: none;
-                width: 100px;
-                position: absolute;
-                left: -115px;
-            }
-
-            .btnb:hover .btnmimg {
-                display: block;
-            }
-
-            .btnb:hover span {
-                display: block;
-            }
-
-            .btnb:hover .btnImg {
-                display: none;
-            }
-
-        }
-
-        @media screen and (max-width: 1029px) {
-            .btnbox {
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-            }
-
-            .btnb {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 50px;
-                height: 50px;
-                border-radius: 25px;
-                background-color: rgb(106, 175, 255);
-                color: #fff;
-                margin-top: 10px;
-                box-shadow: 0 0 4px 1px rgba(211, 211, 211, 0.4);
-            }
-
-            .btnb span {
-                display: none;
-            }
-
-            .btnb .btnImg {
-                width: 32px;
-                height: 32px;
-            }
-
-            .mshow {
-                display: none;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/css/resume.css">
 </head>
 
 <body>
     <div class="body">
-        <img style="width: 100%;" src="./1.png" alt="">
+        <img style="width: 100%;" src="/resources/1.png" alt="">
         <div class="btnbox">
             <div class="btnb" id="totop" style="display: none;">
                 <img class="btnImg" src="../images/resume/totop.png" alt="">
@@ -158,39 +33,7 @@
             </div>
         </div>
     </div>
-    <script>
-        var down = document.getElementById("down");
-        var totop = document.getElementById("totop");
-        window.addEventListener("scroll", function (event) {
-            var scrollTop = document.documentElement.scrollTop;
-            if (scrollTop > 500) {
-                totop.style.display = 'flex'
-            } else {
-                totop.style.display = 'none'
-            }
-        });
-        down.onclick = function () {
-            var elt = document.createElement('a');
-            elt.setAttribute('href', './1.png');
-            elt.setAttribute('download', 'file.png');
-            elt.style.display = 'none';
-            document.body.appendChild(elt);
-            elt.click();
-            document.body.removeChild(elt);
-        }
-        totop.onclick = function () {
-            cancelAnimationFrame(timer);
-            var timer = requestAnimationFrame(function fn () {
-                var scrollTop = document.documentElement.scrollTop;
-                if (scrollTop > 0) {
-                    document.documentElement.scrollTop = scrollTop - 50;
-                    timer = requestAnimationFrame(fn);
-                } else {
-                    cancelAnimationFrame(timer);
-                }
-            });
-        }
-    </script>
+    <script src="/js/resume.js"></script>
 </body>
 
 </html>
