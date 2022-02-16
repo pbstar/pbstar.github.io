@@ -48,11 +48,12 @@ html {
     .bt img {
         width: 775px;
         margin-left: -17px;
-        margin-top: 20px;
+        margin-top: 15px;
     }
 
     .bt1 img {
         margin-left: -15px;
+        margin-top: 20px;
     }
 
     .box {
@@ -98,7 +99,7 @@ html {
         width: 103%;
         padding-left: -11px;
         margin-left: -11px;
-        margin-top: 3%;
+        margin-top: 2%;
         float: left;
         overflow: hidden;
     }
@@ -106,6 +107,7 @@ html {
     .bt1 {
         padding-left: -10px;
         margin-left: -10px;
+        margin-top: 3%;
     }
 
     .bt img {
