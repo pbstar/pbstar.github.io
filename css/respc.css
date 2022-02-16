@@ -1,0 +1,56 @@
+@media screen and (min-width: 900px) {
+    .body {
+        margin: 20px auto;
+        width: 880px;
+        box-shadow: 0 0 5px 1px rgba(184, 184, 184, 0.459);
+        border-radius: 5px;
+        padding-bottom: 60px;
+    }
+
+    .fbox {
+        margin: 0 60px;
+        border-left: 1px solid #558ED5;
+    }
+
+    .ftbox {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 30px 60px 0;
+    }
+
+    .ftrbox img {
+        margin-left: 10px;
+    }
+
+    .ft2box img {
+        width: 100%;
+        margin-bottom: -4px;
+    }
+
+    .bt img {
+        width: 775px;
+        margin-left: -17px;
+        margin-top: 15px;
+    }
+
+    .bt1 img {
+        margin-left: -15px;
+        margin-top: 20px;
+    }
+
+    .box {
+        height: 200px;
+        width: 100%;
+        padding: 0 0 0 20px;
+        box-sizing: border-box;
+        font-family: Microsoft YaHei;
+        color: #666;
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .b1box {
+        width: 200px;
+    }
+}
