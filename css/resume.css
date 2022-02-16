@@ -59,6 +59,16 @@ html {
     .box {
         height: 200px;
         width: 100%;
+        padding: 0 0 0 20px;
+        box-sizing: border-box;
+        font-family: Microsoft YaHei;
+        color: #666;
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .b1box {
+        width: 200px;
     }
 }
 
@@ -117,7 +127,13 @@ html {
     .box {
         height: 200px;
         width: 100%;
-        padding-top: 35px;
+        padding-top: 30px;
+        padding: 30px 0 0 8px;
+        box-sizing: border-box;
+        font-family: Microsoft YaHei;
+        color: #666;
+        font-size: 12px;
+        line-height: 18px;
     }
 }
 
@@ -179,7 +195,7 @@ html {
 @media screen and (max-width: 1029px) {
     .btnbox {
         position: fixed;
-        bottom: 20px;
+        bottom: 25px;
         right: 20px;
     }
 
