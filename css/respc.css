@@ -40,7 +40,6 @@
     }
 
     .box {
-        height: 200px;
         width: 100%;
         padding: 0 0 0 20px;
         box-sizing: border-box;
@@ -51,6 +50,15 @@
     }
 
     .b1box {
-        width: 200px;
+        width: 240px;
+    }
+    .b1box2 {
+        width: 240px;
+    }
+    .box ul{
+        margin-left: 14px;
+    }
+    ol{
+        margin-left: 66px;
     }
 }

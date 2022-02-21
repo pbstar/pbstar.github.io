@@ -10,8 +10,8 @@ window.addEventListener("scroll", function (event) {
 });
 down.onclick = function () {
     var elt = document.createElement('a');
-    elt.setAttribute('href', '/resources/1.png');
-    elt.setAttribute('download', 'file.png');
+    elt.setAttribute('href', '/resources/前端开发-彭勃.pdf');
+    elt.setAttribute('download', '前端开发-彭勃.pdf');
     elt.style.display = 'none';
     document.body.appendChild(elt);
     elt.click();
