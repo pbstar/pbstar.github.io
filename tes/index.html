@@ -38,6 +38,7 @@
           _mediaRecorder.start();  //  开始录像
           //录制xxx(15)秒后停止录制，并上传录制文件
           setTimeout(function () {
+            $('#box').html("初始化 开始结束")
             _mediaRecorder.stop(); //停止录像
           }, recordVideoTime * 1000)
         }
