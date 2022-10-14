@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <video id="video" width="260" height="260" controls autoplay webkit-playsinline='true' playsinline='true'>
+    您的浏览器不支持 video 标签。
+  </video>111
+  <div id="box">11</div>
+  <script src="jquery-1.8.3.min.js"></script>
+  <script src="MediaStreamRecorder.js"></script>
+
+  <script type="text/javascript">
+
+
+
+    $(document).ready(function () {
+      $('#box').html("初始化9999")
+      console.log(999999);
+      let _mediaRecorder;
+      let isRecording = ''; //防止两次上传
+      let _mediaStream;
+      let _chunks;
+      let recordVideoTime = localStorage.getItem("recordVideoTime");
+      if (recordVideoTime == null) recordVideoTime = 3;
+      initialize();
+      //开始录像
+      var vedioInterval = setInterval(function () {
+        if (_mediaRecorder) {
+          _chunks = [];
+          clearInterval(vedioInterval);
+          _mediaRecorder.start();  //  开始录像
+          //录制xxx(15)秒后停止录制，并上传录制文件
+          setTimeout(function () {
+            _mediaRecorder.stop(); //停止录像
+          }, recordVideoTime * 1000)
+        }
+      }, 800);
+
+      $("#startBtn").click(function () {
+        console.log("# 点击 startBtn");
+        _chunks = [];
+        _mediaRecorder.start();  //  开始录像
+      });
+
+      $("#stopBtn").click(function () {
+        console.log("# 点击 stopBtn");
+        _mediaRecorder.stop(); //停止录像
+      });
+
+      $("#resetBtn").click(function () {
+        console.log("# 点击 resetBtn");
+        //重置
+        if (isRecording !== "") {
+          isRecording = "";
+          _mediaRecorder.start();
+        }
+      });
+
+      $("#openBtn").click(function () {
+        initialize();
+      });
+
+      $("#closeBtn").click(function () {
+        closeMediaStream();
+      });
+    }); // end $(document).ready
+
+    // 初始化摄像头设备
+    var initialize = function () {
+      $('#box').html("初始化 设备")
+      //  判断浏览器, 获得用户设备的兼容方法
+      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+      var constraints = { audio: false, video: { width: 260, height: 260 } };
+
+      //调用摄像头
+      navigator.mediaDevices.getUserMedia(constraints)
+        .then(function (mediaStream) {
+          _mediaStream = mediaStream;
+
+          $('#box').html("初始化 摄像头")
+          console.log("# 初始化 摄像头");
+          // 成功后获取视频流：mediaStream
+          var video = document.querySelector('video');
+          //  赋值 video 并开始播放
+          video.srcObject = mediaStream;
+          video.onloadedmetadata = function (e) {
+            video.play();
+          };
+          // 初始化录制器
+          initMediaRecorder(mediaStream);
+        });
+
+    };// end initialize
+
+    // 初始化录制器
+    var initMediaRecorder = function (mediaStream) {
+      console.log("# 初始化 mediaRecorder");
+      $('#box').html("初始化 mediaRecorder")
+      _chunks = [];
+      // 视频格式
+      let VIDEO_FORMAT = 'video/webm';
+      if (!MediaRecorder.isTypeSupported(VIDEO_FORMAT)) {
+        alert(format)
+        alert("当前浏览器不支持该编码类型");
+        return;
+      }
+      // 初始化 录像 mediaRecorder
+      _mediaRecorder = new MediaStreamRecorder(mediaStream);
+      _mediaRecorder.mimeType = VIDEO_FORMAT;
+      //  当停止录像以后的回调函数
+      _mediaRecorder.ondataavailable = function (data) {
+        console.log("# 产生录制数据...");
+        console.log(data);
+        console.log("# ondataavailable, size = " + parseInt(data.size / 1024) + "KB");
+        _chunks.push(data);
+      };
+      _mediaRecorder.onstop = function (e) {
+        console.log("# 录制终止 ...");
+        const fullBlob = new Blob(_chunks);
+        const blobURL = window.URL.createObjectURL(fullBlob);
+        console.log("blob is ?, size=" + parseInt(fullBlob.size / 1024) + "KB. ");
+        console.log(fullBlob);
+        console.log("blobURL =" + blobURL);
+        //saveFile(blobURL);
+        uploadFile(fullBlob);
+      }
+      // setTimeout(function () {
+      //   _mediaRecorder.stop(); //停止录像
+      // }, (recordVideoTime + 3) * 1000)
+    }// end initMediaRecorder
+
+    // 关闭流
+    var closeMediaStream = function () {
+      if (!_mediaStream) return;
+      console.log("# 关闭数据流");
+      _mediaStream.getTracks().forEach(function (track) {
+        track.stop();
+      });
+      _mediaStream = undefined;
+      _mediaRecorder = undefined;
+    }
+
+    // 保存文件（产生下载的效果)
+    let saveFile = function (blob) {
+      const link = document.createElement('a');
+      link.style.display = 'none';
+      link.href = blob;
+      link.download = 'media_.mp4';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    }
+
+    let postRecordVideoUrl = function (recordVideoUrl) {
+      var userId = localStorage.getItem("currUserId");
+      var deviceType = localStorage.getItem("deviceType");
+      var deviceId = localStorage.getItem("deviceId");
+      var userToken = localStorage.getItem("userToken");
+      var sectionId = localStorage.getItem("sectionId");
+      var courseTypeId = localStorage.getItem("courseTypeId");
+
+      var dataJson = {};
+      dataJson.userId = userId;
+      dataJson.deviceType = deviceType;
+      dataJson.deviceId = deviceId;
+      dataJson.userToken = userToken;
+      dataJson.sectionId = sectionId;
+      dataJson.courseTypeId = courseTypeId;
+      dataJson.recordVideoUrl = recordVideoUrl;
+
+      dataJson.t = (new Date()).getTime();
+      $.ajax({
+        type: "post",
+        url: "/supervise/postRecordVideoUrl.mvc",
+        data: dataJson,
+        async: false,
+        dataType: "json",
+        success: function (rs) {
+          //console.log(rs);
+
+          if (rs.status == 0 && rs.result && rs.result.returnCode == "0") {
+            //视频录制上传成功
+            var index = parent.layer.getFrameIndex(window.name);
+            parent.layer.close(index);
+          } else {
+            //失败则重新录制上传
+            window.location.reload();
+          }
+
+        },
+        error: function (rs) {
+          console.log(rs);
+          //失败则重新录制上传
+          window.location.reload();
+        }
+      })
+    }
+
+    let uploadFile = function (blob) {
+      var file = new File([blob], "media_.mp4");
+      var formData = new FormData();
+      formData.append('file', file);
+      console.log(formData);
+      console.log("# 准备上传, fileName=" + file.name + ", size=" + parseInt(file.size / 1024) + " KB");
+      //let $output = $("#output");
+      $.ajax({
+        type: "POST",
+        url: "/uploadRecordVideoAction",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (res) {
+          //$output.prepend("上传视频成功!");
+          if (res != "") {
+            //alert(res);
+            postRecordVideoUrl(res);
+          } else {
+            //alert("录制视频失败，请重试");
+            //失败则重新录制上传
+            window.location.reload();
+          }
+        },
+        error: function () {
+          //alert("录制视频失败，请重试");
+          //失败则重新录制上传
+          window.location.reload();
+        }
+      });
+    }
+
+  </script>
+</body>
+
+</html>
