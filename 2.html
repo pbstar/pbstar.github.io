@@ -9,12 +9,18 @@
 </head>
 
 <body>
-  <div id="box1"></div>
+  <span id="box"></span>
   <br>
-  <div id="box2"></div>
+  <span>webm：</span>
+  <span id="box1"></span>
+  <br>
+  <span>mp4：</span>
+  <span id="box2"></span>
   <script>
+    document.getElementById('box').innerHTML = navigator.userAgent
     document.getElementById('box1').innerHTML = MediaRecorder.isTypeSupported('video/webm')
     document.getElementById('box2').innerHTML = MediaRecorder.isTypeSupported('video/mp4')
+    console.log(navigator.userAgent);
     console.log(MediaRecorder.isTypeSupported('video/webm'));
     console.log(MediaRecorder.isTypeSupported('video/mp4'));
   </script>
