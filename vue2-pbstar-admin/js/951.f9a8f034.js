@@ -1,1 +1,0 @@
-"use strict";(self["webpackChunkvue2_pbstar_admin"]=self["webpackChunkvue2_pbstar_admin"]||[]).push([[951],{8951:function(e,n,t){t.r(n),t.d(n,{default:function(){return l}});var u=function(){var e=this,n=e._self._c;return n("div",[n("el-empty",{attrs:{description:"没有找到该页面"}})],1)},r=[],s={name:"404"},a=s,i=t(1001),c=(0,i.Z)(a,u,r,!1,null,"2c9f765d",null),l=c.exports}}]);
