@@ -1,0 +1,1 @@
+import{_ as c,o as e,c as o}from"./index-Njd6ZwyG.js";const s={},t={class:"box"};function _(n,a){return e(),o("div",t,"404")}const d=c(s,[["render",_],["__scopeId","data-v-1c4ec1df"]]);export{d as default};
