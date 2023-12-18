@@ -1,1 +1,0 @@
-import{_ as o,o as t,c as _,q as a,s as n,e as s}from"./index-Njd6ZwyG.js";const d={},c=e=>(a("data-v-7bcc806f"),e=e(),n(),e),i={class:"box"},p=c(()=>s("h2",null,"关于GDesign",-1)),r=c(()=>s("p",null,"GDesign 是一套基于 Vue 的基础样式组件库。",-1)),l=[p,r];function f(e,h){return t(),_("div",i,l)}const x=o(d,[["render",f],["__scopeId","data-v-7bcc806f"]]);export{x as default};
