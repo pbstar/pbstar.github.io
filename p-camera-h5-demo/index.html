@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="el" style="width: 300px;height: 500px;"></div>
+  <script src="./p-camera-h5.umd.js"></script>
+  <script>
+    const camera = new pCameraH5({
+      el: document.querySelector('#el'),   // 容器选择器
+      style: `
+        #p-camera-h5 #p-record-time {
+          color: red;
+        }
+      `,                        // 自定义样式
+      watermark: {             // 水印配置
+        text: 'pCameraH5',      // 文字水印
+        position: 'bottom-left', // 水印位置
+        color: 'rgba(255, 255, 255, 0.5)', // 文字颜色
+        fontSize: '18px'       // 文字大小
+      },
+    });
+    camera.on('capture', (res) => {
+      camera.api.downloadFile(res);
+    });
+    camera.on('record', (res) => {
+      camera.api.downloadFile(res);
+    });
+  </script>
+</body>
+
+</html>
