@@ -1,1 +1,0 @@
-import{_ as i,c as a,o as n,ae as h}from"./chunks/framework.C0tAYdfm.js";const g=JSON.parse('{"title":"快速开始","description":"","frontmatter":{},"headers":[],"relativePath":"intro/start.md","filePath":"intro/start.md"}'),t={name:"intro/start.md"};function l(p,s,k,e,r,d){return n(),a("div",null,s[0]||(s[0]=[h("",9)]))}const y=i(t,[["render",l]]);export{g as __pageData,y as default};
