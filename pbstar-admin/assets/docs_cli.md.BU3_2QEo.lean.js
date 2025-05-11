@@ -1,0 +1,1 @@
+import{_ as i,c as s,o as l,ae as e}from"./chunks/framework.C0tAYdfm.js";const k=JSON.parse('{"title":"Cli 脚手架","description":"","frontmatter":{},"headers":[],"relativePath":"docs/cli.md","filePath":"docs/cli.md"}'),t={name:"docs/cli.md"};function h(n,a,o,p,r,d){return l(),s("div",null,a[0]||(a[0]=[e("",18)]))}const u=i(t,[["render",h]]);export{k as __pageData,u as default};
