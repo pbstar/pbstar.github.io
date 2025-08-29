@@ -1,15 +1,246 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初辰ge</title>
+    <link rel="stylesheet" href="./pbstar/css/style.css" />
+  </head>
+  <body>
+    <!-- 导航栏 -->
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">初辰ge</div>
+          <ul class="nav-links">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#products">我的作品</a></li>
+            <li><a href="#about">关于我</a></li>
+          </ul>
+          <div class="mobile-menu">☰</div>
+        </nav>
+      </div>
+    </header>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>初辰</title>
-</head>
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="fade-in">初辰ge</h1>
+          <p class="fade-in">一个有理想的切图仔</p>
+          <div class="hero-buttons">
+            <a href="#products" class="btn btn-secondary fade-in">查看作品</a>
+            <a href="#about" class="btn btn-primary fade-in">了解我</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<body>
-    <div>初辰（pbstar@sina.cn）</div>
-</body>
+    <!-- 作品部分 -->
+    <section class="products" id="products">
+      <div class="container">
+        <div class="section-title">
+          <h2>我的作品</h2>
+        </div>
+        <div class="products-grid">
+          <div class="product-card fade-in">
+            <div class="product-info">
+              <h3>Pbstar-admin</h3>
+              <p>
+                Pbstar-admin 是一套全面便捷的后台管理系统解决方案，基于
+                wujie、rsbuild、pnpm 完成微前端架构，运用 vue3、pinia、element
+                plus 等主流技术栈。
+              </p>
+              <a
+                href="https://github.com/pbstar/pbstar-admin"
+                class="product-link"
+                >查看详情</a
+              >
+            </div>
+          </div>
+          <div class="product-card fade-in">
+            <div class="product-info">
+              <h3>p-seamless-scroll</h3>
+              <p>
+                p-seamless-scroll 是一个创建无缝滚动效果的 js
+                插件。它有着轻量且高效的特性，支持丰富的自定义配置选项，提供了一系列
+                API 方法以及事件监听功能。
+              </p>
+              <a
+                href="https://github.com/pbstar/p-seamless-scroll"
+                class="product-link"
+                >查看详情</a
+              >
+            </div>
+          </div>
+          <div class="product-card fade-in">
+            <div class="product-info">
+              <h3>p-export-excel</h3>
+              <p>
+                p-export-excel 是一个导出 Excel 的 js
+                插件，支持丰富的自定义配置选项，能够轻松生成 xlsx 和 csv
+                格式的数据报表。
+              </p>
+              <a
+                href="https://github.com/pbstar/p-export-excel"
+                class="product-link"
+                >查看详情</a
+              >
+            </div>
+          </div>
+          <div class="product-card fade-in">
+            <div class="product-info">
+              <h3>p-camera-h5</h3>
+              <p>
+                一款轻量级 H5
+                相机插件，支持拍照、录像、文字图片水印与高度样式定制化，适配现代浏览器，为
+                Web 应用提供原生级摄像头体验。
+              </p>
+              <a
+                href="https://github.com/pbstar/p-camera-h5"
+                class="product-link"
+                >查看详情</a
+              >
+            </div>
+          </div>
+          <div class="product-card fade-in">
+            <div class="product-info">
+              <h3>fitview</h3>
+              <p>
+                fitview 是一个视口自适应 js
+                插件，它支持多种适配模式，能够快速实现大屏自适应效果。
+              </p>
+              <a href="https://github.com/pbstar/fitview" class="product-link"
+                >查看详情</a
+              >
+            </div>
+          </div>
+          <div class="product-card fade-in">
+            <div class="product-info">
+              <h3>摸鱼看盘</h3>
+              <p>
+                摸鱼看盘是一个优雅、极简的 VS Code
+                股票实时查看插件，让您在编码的同时轻松掌握股市动态。
+              </p>
+              <a
+                href="https://github.com/pbstar/watch-stock"
+                class="product-link"
+                >查看详情</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- 关于我部分 -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>关于我</h2>
+        </div>
+        <div class="profile fade-in">
+          <div class="profile-img">
+            <img src="./pbstar/imgs/tx.jpg" alt="个人头像" />
+          </div>
+          <div class="profile-info">
+            <h3>初辰ge</h3>
+            <p style="margin-bottom: 20px">一个有理想的切图仔</p>
+            <div class="contact-info">
+              <p>微信: P24612582</p>
+              <p>邮箱: pbstar@sina.cn</p>
+            </div>
+            <div class="social-links">
+              <a
+                href="https://juejin.cn/user/1961991576240190/posts"
+                title="掘金"
+                ><span>掘金</span></a
+              >
+              <a href="https://blog.csdn.net/chuenst" title="CSDN"
+                ><span>CSDN</span></a
+              >
+              <a href="https://github.com/pbstar" title="GitHub"
+                ><span>GitHub</span></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-bottom">
+          <p>
+            <span>© 2025 初辰ge</span>
+            <span> | </span>
+            <span id="noBeianText">All Rights Reserved</span>
+            <a
+              id="beianText"
+              style="display: none"
+              href="https://beian.miit.gov.cn/"
+              >京ICP备2025125905号</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // 滚动动画效果
+      document.addEventListener("DOMContentLoaded", function () {
+        const fadeElements = document.querySelectorAll(".fade-in");
+
+        function checkFade() {
+          fadeElements.forEach((element) => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+
+            if (elementTop < window.innerHeight - elementVisible) {
+              element.classList.add("visible");
+            }
+          });
+        }
+        // 检查是否需要显示备案号
+        function checkBeian() {
+          const beianText = document.getElementById("beianText");
+          const noBeianText = document.getElementById("noBeianText");
+          if (document.domain == "pbstar.cn") {
+            beianText.style.display = "block";
+            noBeianText.style.display = "none";
+          } else {
+            beianText.style.display = "none";
+            noBeianText.style.display = "block";
+          }
+        }
+
+        // 初始检查
+        checkFade();
+        checkBeian();
+
+        // 滚动时检查
+        window.addEventListener("scroll", checkFade);
+
+        // 移动端菜单
+        const mobileMenu = document.querySelector(".mobile-menu");
+        const navLinks = document.querySelector(".nav-links");
+
+        mobileMenu.addEventListener("click", function () {
+          navLinks.style.display =
+            navLinks.style.display === "flex" ? "none" : "flex";
+        });
+
+        // 点击导航链接后关闭菜单
+        const navLinkItems = document.querySelectorAll(".nav-links li a");
+        navLinkItems.forEach((link) => {
+          link.addEventListener("click", function () {
+            if (window.innerWidth <= 768) {
+              navLinks.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
 </html>
