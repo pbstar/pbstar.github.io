@@ -301,11 +301,10 @@ footer {
 }
 
 .footer-bottom {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-top: 20px;
-}
-
-.footer-bottom p {
   color: #777;
   font-size: 14px;
 }
