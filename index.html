@@ -204,7 +204,8 @@
         function checkBeian() {
           const beianText = document.getElementById("beianText");
           const noBeianText = document.getElementById("noBeianText");
-          if (document.domain == "pbstar.cn") {
+          const beianList = ["pbstar.cn", "www.pbstar.cn"];
+          if (beianList.includes(document.domain)) {
             beianText.style.display = "block";
             noBeianText.style.display = "none";
           } else {
