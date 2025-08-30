@@ -62,7 +62,7 @@
           {
             x: 10,
             y: 58,
-            text: "v2.0.0",
+            text: "v2.0.3",
           },
         ],
       });
@@ -72,6 +72,7 @@
       let timer = null;
       captureBtn.addEventListener("click", () => {
         camera.capture().then((file) => {
+          console.log(file)
           download(file);
         });
       });
