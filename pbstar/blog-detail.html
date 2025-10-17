@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="blog-title">博客详情 - 初辰ge</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.net/font-awesome/6.7.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/blog.css" />
+  </head>
+  <body>
+    <!-- 导航栏 -->
+    <header id="main-header">
+      <!-- 导航栏将通过JavaScript动态生成 -->
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="page-content">
+      <!-- 博客详情 -->
+      <div class="blog-detail-container">
+        <a href="/pbstar/blogs.html" class="back-to-blogs">
+          <i class="fas fa-arrow-left"></i>
+          返回博客列表
+        </a>
+
+        <div id="blog-content">
+          <div class="loading">
+            <i class="fas fa-spinner"></i>
+            <p>正在加载博客内容...</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer id="main-footer">
+      <!-- 页脚将通过JavaScript动态生成 -->
+    </footer>
+
+    <!-- 页面组件模块 -->
+    <script src="./js/page-components.js"></script>
+    <!-- 统一数据工具模块 -->
+    <script src="./js/data-utils.js"></script>
+    <script>
+      // 解析Markdown为HTML的简单实现
+      function parseMarkdown(markdown) {
+        let html = markdown;
+
+        // 标题
+        html = html.replace(/^### (.*$)/gim, "<h3>$1</h3>");
+        html = html.replace(/^## (.*$)/gim, "<h2>$1</h2>");
+        html = html.replace(/^# (.*$)/gim, "<h1>$1</h1>");
+
+        // 粗体和斜体
+        html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+        html = html.replace(/\*(.*?)\*/g, "<em>$1</em>");
+
+        // 行内代码
+        html = html.replace(/`(.*?)`/g, "<code>$1</code>");
+
+        // 代码块
+        html = html.replace(/```([\s\S]*?)```/g, "<pre><code>$1</code></pre>");
+
+        // 链接
+        html = html.replace(
+          /\[([^\]]+)\]\(([^\)]+)\)/g,
+          '<a href="$2" target="_blank">$1</a>'
+        );
+
+        // 图片
+        html = html.replace(
+          /!\[([^\]]*)\]\(([^\)]+)\)/g,
+          '<img src="$2" alt="$1">'
+        );
+
+        // 引用
+        html = html.replace(/^> (.*$)/gim, "<blockquote>$1</blockquote>");
+
+        // 列表
+        html = html.replace(/^\* (.*$)/gim, "<li>$1</li>");
+        html = html.replace(/^- (.*$)/gim, "<li>$1</li>");
+
+        // 将连续的li包装在ul中
+        html = html.replace(/(<li>.*<\/li>)/s, "<ul>$1</ul>");
+
+        // 段落
+        html = html.replace(/\n\n/g, "</p><p>");
+        html = "<p>" + html + "</p>";
+
+        // 清理多余的标签
+        html = html.replace(/<p><\/p>/g, "");
+        html = html.replace(/<p>(<h[1-6]>)/g, "$1");
+        html = html.replace(/(<\/h[1-6]>)<\/p>/g, "$1");
+        html = html.replace(/<p>(<pre>)/g, "$1");
+        html = html.replace(/(<\/pre>)<\/p>/g, "$1");
+        html = html.replace(/<p>(<blockquote>)/g, "$1");
+        html = html.replace(/(<\/blockquote>)<\/p>/g, "$1");
+        html = html.replace(/<p>(<ul>)/g, "$1");
+        html = html.replace(/(<\/ul>)<\/p>/g, "$1");
+
+        return html;
+      }
+
+      // 格式化日期（使用工具模块）
+      function formatDate(dateString) {
+        return DataUtils.utils.formatDate(dateString);
+      }
+
+      // 加载博客内容
+      async function loadBlog() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const blogId = urlParams.get("id");
+
+        if (!blogId) {
+          showError("未找到博客ID");
+          return;
+        }
+
+        const blogContent = document.getElementById("blog-content");
+
+        try {
+          // 使用工具函数加载博客数据
+          const blogs = await DataUtils.loadData("./json/blogs.json");
+          const blog = blogs.find((b) => b.id === blogId);
+
+          if (!blog) {
+            throw new Error("未找到指定的博客");
+          }
+
+          // 更新页面标题
+          document.getElementById(
+            "blog-title"
+          ).textContent = `${blog.title} - 初辰ge`;
+
+          // 加载Markdown内容
+          const mdResponse = await fetch(`./blogs/${blog.filename}`);
+          if (!mdResponse.ok) {
+            throw new Error("无法加载博客内容");
+          }
+
+          const markdown = await mdResponse.text();
+          const contentHTML = parseMarkdown(markdown);
+
+          // 渲染页面
+          blogContent.innerHTML = `
+                    <div class="blog-header">
+                        <h1>${blog.title}</h1>
+                        <div class="blog-meta">
+                            <div class="blog-meta-item">
+                                <i class="fas fa-calendar"></i>
+                                ${formatDate(blog.date)}
+                            </div>
+                            <div class="blog-meta-item">
+                                <i class="fas fa-tag"></i>
+                                ${blog.tags.join(", ")}
+                            </div>
+                            <div class="blog-meta-item">
+                                <i class="fas fa-eye"></i>
+                                ${blog.readCount || 0} 阅读
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        ${contentHTML}
+                    </div>
+                `;
+
+          // 增加阅读量
+          console.log(`博客 ${blogId} 阅读量+1`);
+        } catch (error) {
+          console.error("加载博客失败:", error);
+          showError(error.message || "加载博客失败，请稍后重试");
+        }
+      }
+
+      function showError(message) {
+        document.getElementById("blog-content").innerHTML = `
+                <div class="error">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>加载失败</h3>
+                    <p>${message}</p>
+                    <a href="/pbstar/blogs.html" class="back-to-blogs">
+                        <i class="fas fa-arrow-left"></i>
+                        返回博客列表
+                    </a>
+                </div>
+            `;
+      }
+
+      // 页面加载完成后执行
+      document.addEventListener("DOMContentLoaded", function () {
+        // 初始化页面组件（包含导航栏、页脚、滚动效果等）
+        PageComponents.initPageComponents();
+
+        // 加载博客内容
+        loadBlog();
+      });
+    </script>
+  </body>
+</html>

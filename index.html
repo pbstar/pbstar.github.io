@@ -9,23 +9,13 @@
       href="https://cdn.staticfile.net/font-awesome/6.7.1/css/all.min.css"
     />
     <link rel="stylesheet" href="./pbstar/css/style.css" />
+    <link rel="stylesheet" href="./pbstar/css/blog.css" />
+    <script src="./pbstar/js/product-utils.js"></script>
   </head>
   <body>
     <!-- 导航栏 -->
-    <header>
-      <div class="container">
-        <nav>
-          <a href="#home" class="logo">初辰ge</a>
-          <ul class="nav-links">
-            <li><a href="#home">首页</a></li>
-            <li><a href="#products">我的作品</a></li>
-            <li><a href="#about">关于我</a></li>
-          </ul>
-          <div class="mobile-menu">
-            <i class="fas fa-bars"></i>
-          </div>
-        </nav>
-      </div>
+    <header id="main-header">
+      <!-- 导航栏将通过JavaScript动态生成 -->
     </header>
 
     <!-- 英雄区域 -->
@@ -46,245 +36,110 @@
       </div>
     </section>
 
-    <!-- 作品部分 -->
-    <section class="products" id="products">
-      <div class="container">
-        <div class="section-title">
-          <h2>我的作品</h2>
-          <p>精选项目展示</p>
-        </div>
-        <div class="products-grid">
-          <div class="product-card fade-in">
-            <div class="product-info">
-              <h3>Pbstar-admin</h3>
-              <p>
-                Pbstar-admin 是一套全面便捷的后台管理系统解决方案，基于
-                wujie、rsbuild、pnpm 完成微前端架构，运用 vue3、pinia、element
-                plus 等主流技术栈。
-              </p>
-              <a
-                href="https://github.com/pbstar/pbstar-admin"
-                class="product-link"
-              >
-                查看详情 <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
+    <!-- 主要内容区域 -->
+    <main class="page-content">
+      <!-- 作品部分 -->
+      <section class="products" id="products">
+        <div class="container">
+          <div class="section-title">
+            <h2>我的作品</h2>
+            <p>精选项目展示</p>
           </div>
-          <div class="product-card fade-in">
-            <div class="product-info">
-              <h3>p-seamless-scroll</h3>
-              <p>
-                p-seamless-scroll 是一个创建无缝滚动效果的 js
-                插件。它有着轻量且高效的特性，支持丰富的自定义配置选项，提供了一系列
-                API 方法以及事件监听功能。
-              </p>
-              <a
-                href="https://github.com/pbstar/p-seamless-scroll"
-                class="product-link"
-              >
-                查看详情 <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-          <div class="product-card fade-in">
-            <div class="product-info">
-              <h3>p-export-excel</h3>
-              <p>
-                p-export-excel 是一个导出 Excel 的 js
-                插件，支持丰富的自定义配置选项，能够轻松生成 xlsx 和 csv
-                格式的数据报表。
-              </p>
-              <a
-                href="https://github.com/pbstar/p-export-excel"
-                class="product-link"
-              >
-                查看详情 <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-          <div class="product-card fade-in">
-            <div class="product-info">
-              <h3>p-camera-h5</h3>
-              <p>
-                一款轻量级 H5
-                相机插件，支持拍照、录像、文字图片水印与高度样式定制化，适配现代浏览器，为
-                Web 应用提供原生级摄像头体验。
-              </p>
-              <a
-                href="https://github.com/pbstar/p-camera-h5"
-                class="product-link"
-              >
-                查看详情 <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-          <div class="product-card fade-in">
-            <div class="product-info">
-              <h3>fitview</h3>
-              <p>
-                fitview 是一个视口自适应 js
-                插件，它支持多种适配模式，能够快速实现大屏自适应效果。
-              </p>
-              <a href="https://github.com/pbstar/fitview" class="product-link">
-                查看详情 <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-          <div class="product-card fade-in">
-            <div class="product-info">
-              <h3>摸鱼看盘</h3>
-              <p>
-                摸鱼看盘是一个优雅、极简的 VS Code
-                股票实时查看插件，让您在编码的同时轻松掌握股市动态。
-              </p>
-              <a
-                href="https://github.com/pbstar/watch-stock"
-                class="product-link"
-              >
-                查看详情 <i class="fas fa-arrow-right"></i>
-              </a>
+          <div class="products-grid" id="products-container">
+            <div class="loading">
+              <i class="fas fa-spinner fa-spin"></i> 加载作品中...
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- 关于我部分 -->
-    <section class="about" id="about">
-      <div class="container">
-        <div class="section-title">
-          <h2>关于我</h2>
-          <p>个人简介与联系方式</p>
-        </div>
-        <div class="profile fade-in">
-          <div class="profile-img">
-            <img src="./pbstar/imgs/tx.jpg" alt="个人头像" />
+      <!-- 博客部分 -->
+      <section class="home-blogs" id="blogs">
+        <div class="container">
+          <div class="section-title">
+            <h2>最新博客</h2>
+            <p>技术分享与思考</p>
           </div>
-          <div class="profile-info">
-            <h3>初辰ge</h3>
-            <p>
-              一个有理想的切图仔，专注于 HTML、CSS、JavaScript、Vue、Nodejs
-              等技术。
-            </p>
-            <div class="contact-info">
-              <p><i class="fab fa-weixin"></i> 微信: P24612582</p>
-              <p><i class="fas fa-envelope"></i> 邮箱: pbstar@sina.cn</p>
-            </div>
-            <div class="social-links">
-              <a
-                href="https://juejin.cn/user/1961991576240190/posts"
-                title="掘金"
-              >
-                掘金
-              </a>
-              <a href="https://blog.csdn.net/chuenst" title="CSDN"> CSDN </a>
-              <a href="https://github.com/pbstar" title="GitHub"> GitHub </a>
+          <div class="home-blogs-grid" id="home-blogs-container">
+            <div class="loading">
+              <i class="fas fa-spinner fa-spin"></i> 加载中...
             </div>
           </div>
+          <div class="view-more-btn">
+            <a href="/pbstar/blogs.html" class="btn">
+              <i class="fas fa-list"></i> 查看全部博客
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <!-- 关于我部分 -->
+      <section class="about" id="about">
+        <div class="container">
+          <div class="section-title">
+            <h2>关于我</h2>
+            <p>个人简介与联系方式</p>
+          </div>
+          <div class="profile fade-in">
+            <div class="profile-img">
+              <img src="./pbstar/imgs/tx.jpg" alt="个人头像" />
+            </div>
+            <div class="profile-info">
+              <h3>初辰ge</h3>
+              <p>
+                一个有理想的切图仔，专注于 HTML、CSS、JavaScript、Vue、Nodejs
+                等技术。
+              </p>
+              <div class="contact-info">
+                <p><i class="fab fa-weixin"></i> 微信: P24612582</p>
+                <p><i class="fas fa-envelope"></i> 邮箱: pbstar@sina.cn</p>
+              </div>
+              <div class="social-links">
+                <a
+                  href="https://juejin.cn/user/1961991576240190/posts"
+                  title="掘金"
+                >
+                  掘金
+                </a>
+                <a href="https://blog.csdn.net/chuenst" title="CSDN"> CSDN </a>
+                <a href="https://github.com/pbstar" title="GitHub"> GitHub </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!-- 页脚 -->
-    <footer id="contact">
-      <div class="container">
-        <div class="footer-bottom">
-          <span>© 2025 初辰ge</span>
-          <span>|</span>
-          <span id="noBeianText">All Rights Reserved</span>
-          <a
-            id="beianText"
-            style="display: none"
-            href="https://beian.miit.gov.cn/"
-            >京ICP备2025125905号</a
-          >
-        </div>
-      </div>
+    <footer id="main-footer">
+      <!-- 页脚将通过JavaScript动态生成 -->
     </footer>
 
+    <!-- 页面组件模块 -->
+    <script src="/pbstar/js/page-components.js"></script>
+    <!-- 统一数据工具模块 -->
+    <script src="/pbstar/js/data-utils.js"></script>
     <script>
-      // 滚动动画效果
+      // 页面加载完成后初始化
       document.addEventListener("DOMContentLoaded", function () {
-        const fadeElements = document.querySelectorAll(".fade-in");
+        // 初始化页面组件（包含导航栏、页脚、滚动效果等）
+        PageComponents.initPageComponents();
 
-        function checkFade() {
-          fadeElements.forEach((element) => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 150;
+        // 初始化滚动动画
+        PageComponents.initScrollAnimation();
 
-            if (elementTop < window.innerHeight - elementVisible) {
-              element.classList.add("visible");
-            }
-          });
-        }
-
-        // 检查是否需要显示备案号
-        function checkBeian() {
-          const beianText = document.getElementById("beianText");
-          const noBeianText = document.getElementById("noBeianText");
-          const beianList = ["pbstar.cn", "www.pbstar.cn"];
-          if (beianList.includes(document.domain)) {
-            beianText.style.display = "block";
-            noBeianText.style.display = "none";
-          } else {
-            beianText.style.display = "none";
-            noBeianText.style.display = "block";
-          }
-        }
-
-        // 导航栏滚动效果
-        function handleScroll() {
-          const header = document.querySelector("header");
-          if (window.scrollY > 100) {
-            header.style.background = "rgba(255, 255, 255, 0.98)";
-            header.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.1)";
-          } else {
-            header.style.background = "rgba(255, 255, 255, 0.95)";
-            header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.08)";
-          }
-        }
-
-        // 移动端菜单
-        const mobileMenu = document.querySelector(".mobile-menu");
-        const navLinks = document.querySelector(".nav-links");
-
-        mobileMenu.addEventListener("click", function () {
-          navLinks.classList.toggle("active");
+        // 加载产品列表
+        DataUtils.loadAndDisplay("products-container", {
+          dataPath: "/pbstar/json/products.json",
+          type: "product",
         });
 
-        // 点击导航链接后关闭菜单
-        const navLinkItems = document.querySelectorAll(".nav-links li a");
-        navLinkItems.forEach((link) => {
-          link.addEventListener("click", function () {
-            if (window.innerWidth <= 768) {
-              navLinks.classList.remove("active");
-            }
-          });
-        });
-
-        // 初始检查
-        checkFade();
-        checkBeian();
-        handleScroll();
-
-        // 滚动时检查
-        window.addEventListener("scroll", () => {
-          checkFade();
-          handleScroll();
-        });
-
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-          anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-              target.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              });
-            }
-          });
+        // 加载首页博客
+        DataUtils.loadAndDisplay("home-blogs-container", {
+          dataPath: "/pbstar/json/blogs.json",
+          type: "blog",
+          cardType: "home",
+          count: 5,
         });
       });
     </script>
