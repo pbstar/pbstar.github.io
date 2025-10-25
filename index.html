@@ -6,7 +6,7 @@
     <title>初辰ge</title>
     <link
       rel="stylesheet"
-      href="https://cdn.staticfile.net/font-awesome/6.7.1/css/all.min.css"
+      href="https://cdn.staticfile.net/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="./pbstar/css/style.css" />
     <link rel="stylesheet" href="./pbstar/css/blog.css" />
@@ -21,13 +21,13 @@
     <section class="hero" id="home">
       <div class="container">
         <div class="hero-content">
-          <h1 class="fade-in">初辰ge</h1>
-          <p class="fade-in">一个有理想的切图仔</p>
+          <h1>初辰ge</h1>
+          <p>一个有理想的切图仔</p>
           <div class="hero-buttons">
-            <a href="#products" class="btn btn-primary fade-in">
+            <a href="#products" class="btn btn-primary">
               <i class="fas fa-code"></i> 查看作品
             </a>
-            <a href="#about" class="btn btn-secondary fade-in">
+            <a href="#about" class="btn btn-secondary">
               <i class="fas fa-user"></i> 了解我
             </a>
           </div>
@@ -60,15 +60,18 @@
             <p>技术分享与思考</p>
           </div>
           <div class="home-blogs-grid" id="home-blogs-container">
-            <div class="loading">
+            <!-- <div class="loading">
               <i class="fas fa-spinner fa-spin"></i> 加载中...
+            </div> -->
+            <div class="no-blogs">
+              <p>暂无博客发布</p>
             </div>
           </div>
-          <div class="view-more-btn">
+          <!-- <div class="view-more-btn">
             <a href="/pbstar/blogs.html" class="btn">
               <i class="fas fa-list"></i> 查看全部博客
             </a>
-          </div>
+          </div> -->
         </div>
       </section>
 
@@ -79,7 +82,7 @@
             <h2>关于我</h2>
             <p>个人简介与联系方式</p>
           </div>
-          <div class="profile fade-in">
+          <div class="profile">
             <div class="profile-img">
               <img src="./pbstar/imgs/tx.jpg" alt="个人头像" />
             </div>
@@ -124,9 +127,6 @@
         // 初始化页面组件（包含导航栏、页脚、滚动效果等）
         PageComponents.initPageComponents();
 
-        // 初始化滚动动画
-        PageComponents.initScrollAnimation();
-
         // 加载产品列表
         DataUtils.loadAndDisplay("products-container", {
           dataPath: "/pbstar/json/products.json",
@@ -134,12 +134,12 @@
         });
 
         // 加载首页博客
-        DataUtils.loadAndDisplay("home-blogs-container", {
-          dataPath: "/pbstar/json/blogs.json",
-          type: "blog",
-          cardType: "home",
-          count: 5,
-        });
+        // DataUtils.loadAndDisplay("home-blogs-container", {
+        //   dataPath: "/pbstar/json/blogs.json",
+        //   type: "blog",
+        //   cardType: "home",
+        //   count: 5,
+        // });
       });
     </script>
   </body>

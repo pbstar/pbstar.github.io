@@ -7,41 +7,5 @@
     "date": "2024-01-15",
     "tags": ["测试", "前端", "JavaScript"],
     "readCount": 128
-  },
-  {
-    "id": "2",
-    "title": "2024年前端开发趋势展望",
-    "summary": "探讨2024年前端开发的新趋势，包括新的框架、工具和技术发展方向。",
-    "filename": "2024前端开发趋势.md",
-    "date": "2024-01-10",
-    "tags": ["前端", "趋势", "技术"],
-    "readCount": 256
-  },
-  {
-    "id": "3",
-    "title": "Vue3 Composition API 完全指南",
-    "summary": "深入学习Vue3的Composition API，理解其设计思想和最佳实践。",
-    "filename": "Vue3 Composition API 指南.md",
-    "date": "2024-01-08",
-    "tags": ["Vue3", "Composition API", "前端框架"],
-    "readCount": 189
-  },
-  {
-    "id": "4",
-    "title": "JavaScript性能优化实战技巧",
-    "summary": "分享JavaScript性能优化的实用技巧，包括代码优化、内存管理和性能监控。",
-    "filename": "JavaScript性能优化.md",
-    "date": "2024-01-05",
-    "tags": ["JavaScript", "性能优化", "最佳实践"],
-    "readCount": 342
-  },
-  {
-    "id": "5",
-    "title": "响应式设计最佳实践",
-    "summary": "探讨现代响应式设计的最佳实践，包括移动优先、弹性布局和媒体查询。",
-    "filename": "响应式设计最佳实践.md",
-    "date": "2024-01-03",
-    "tags": ["响应式设计", "CSS", "移动端"],
-    "readCount": 167
   }
 ]

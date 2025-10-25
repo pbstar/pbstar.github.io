@@ -65,7 +65,7 @@ const DataUtils = {
 
       if (type === "home") {
         return `
-          <div class="home-blog-item fade-in" onclick="location.href='/pbstar/blog-detail.html?id=${item.id}'">
+          <div class="home-blog-item" onclick="location.href='/pbstar/blog-detail.html?id=${item.id}'">
             <h3>${item.title}</h3>
             <p>${item.summary}</p>
             <div class="blog-meta">${date}<div class="blog-tags">${tags}</div></div>
@@ -73,7 +73,7 @@ const DataUtils = {
       }
 
       return `
-        <div class="blog-card fade-in" onclick="location.href='/pbstar/blog-detail.html?id=${
+        <div class="blog-card" onclick="location.href='/pbstar/blog-detail.html?id=${
           item.id
         }'">
           <h3>${item.title}</h3>
@@ -99,7 +99,7 @@ const DataUtils = {
         : "";
 
       return `
-        <div class="product-card fade-in">
+        <div class="product-card">
           <div class="product-info">
             <h3>${item.name}</h3>
             <p>${item.description}</p>

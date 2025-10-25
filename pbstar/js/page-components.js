@@ -200,31 +200,6 @@ function initPageComponents(options = {}) {
 }
 
 /**
- * 初始化滚动动画效果
- * @param {string} selector - 动画元素选择器，默认为 '.fade-in'
- */
-function initScrollAnimation(selector = ".fade-in") {
-  const fadeElements = document.querySelectorAll(selector);
-
-  function checkFade() {
-    fadeElements.forEach((element) => {
-      const elementTop = element.getBoundingClientRect().top;
-      const elementVisible = 150;
-
-      if (elementTop < window.innerHeight - elementVisible) {
-        element.classList.add("visible");
-      }
-    });
-  }
-
-  // 初始检查
-  checkFade();
-
-  // 滚动时检查
-  window.addEventListener("scroll", checkFade);
-}
-
-/**
  * 添加博客卡片动画样式
  */
 function addBlogCardAnimation() {
@@ -232,12 +207,10 @@ function addBlogCardAnimation() {
   style.textContent = `
     .blog-card {
       opacity: 0;
-      transform: translateY(20px);
       transition: all 0.6s ease;
     }
     .blog-card.visible {
       opacity: 1;
-      transform: translateY(0);
     }
   `;
   document.head.appendChild(style);
@@ -246,6 +219,5 @@ function addBlogCardAnimation() {
 // 浏览器环境，挂载到全局对象
 window.PageComponents = {
   initPageComponents,
-  initScrollAnimation,
   addBlogCardAnimation,
 };
