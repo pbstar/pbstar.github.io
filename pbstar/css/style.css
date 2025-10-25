@@ -7,10 +7,12 @@
 }
 
 body {
-  background-color: #f8fafc;
-  color: #334155;
+  background-color: #ffffff;
+  color: #202124;
   line-height: 1.6;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 main {
@@ -20,17 +22,17 @@ main {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
 /* 导航栏 */
 header {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
   position: fixed;
   width: 100%;
   z-index: 1000;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 nav {
@@ -42,42 +44,47 @@ nav {
 
 .logo {
   font-size: 24px;
-  font-weight: 700;
-  color: #3b82f6;
+  font-weight: 600;
+  color: #1a73e8;
   text-decoration: none;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 32px;
+  gap: 24px;
 }
 
 .nav-links a {
-  color: #64748b;
+  color: #5f6368;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: all 0.2s ease;
   position: relative;
   text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
 }
 
 .nav-links a:hover {
-  color: #3b82f6;
+  color: #1a73e8;
 }
 
 .nav-links a::after {
   content: "";
   position: absolute;
   width: 0;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background: #3b82f6;
-  transition: width 0.3s ease;
+  height: 3px;
+  bottom: 0;
+  left: 50%;
+  background: #1a73e8;
+  transition: all 0.2s ease;
+  border-radius: 2px;
+  transform: translateX(-50%);
 }
 
-.nav-links a:hover::after {
-  width: 100%;
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 24px;
 }
 
 .mobile-menu {
@@ -92,7 +99,7 @@ nav {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e8f0fe 100%);
   position: relative;
   overflow: hidden;
 }
@@ -104,7 +111,7 @@ nav {
   height: 200%;
   background: radial-gradient(
     circle,
-    rgba(59, 130, 246, 0.05) 0%,
+    rgba(26, 115, 232, 0.08) 0%,
     transparent 70%
   );
 }
@@ -115,24 +122,24 @@ nav {
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
+  padding: 0 24px;
 }
 
 .hero h1 {
   font-size: 56px;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 16px;
-  background: linear-gradient(135deg, #3b82f6, #06b6d4);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  line-height: 1.3;
+  color: #202124;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
 }
 
 .hero p {
   font-size: 20px;
-  color: #64748b;
+  color: #5f6368;
   margin-bottom: 32px;
   font-weight: 400;
+  line-height: 1.5;
 }
 
 .hero-buttons {
@@ -144,28 +151,35 @@ nav {
 
 .btn {
   padding: 12px 32px;
-  border-radius: 50px;
-  font-weight: 600;
+  border-radius: 24px;
+  font-weight: 500;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   border: none;
   cursor: pointer;
   font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  background: #1a73e8;
   color: white;
+}
+
+.btn-primary:hover {
+  background: #0d47a1;
 }
 
 .btn-secondary {
   background: transparent;
-  color: #3b82f6;
-  border: 2px solid #3b82f6;
+  color: #1a73e8;
+  border: 1px solid #1a73e8;
 }
 
 .btn-secondary:hover {
-  background: #3b82f6;
+  background: #1a73e8;
   color: white;
 }
 
@@ -182,8 +196,8 @@ nav {
 
 .section-title h2 {
   font-size: 40px;
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 600;
+  color: #202124;
   margin-bottom: 16px;
   position: relative;
   display: inline-block;
@@ -194,7 +208,7 @@ nav {
   position: absolute;
   width: 60px;
   height: 4px;
-  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  background: #1a73e8;
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
@@ -204,30 +218,30 @@ nav {
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 32px;
+  gap: 24px;
 }
 
 .product-card {
   background: #ffffff;
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 32px;
-  transition: all 0.3s ease;
-  border: 1px solid #f1f5f9;
+  transition: all 0.2s ease;
+  border: 1px solid #dadce0;
 }
 
 .product-card:hover {
-  border-color: #e2e8f0;
+  border-color: #1a73e8;
 }
 
 .product-info h3 {
   font-size: 24px;
   font-weight: 600;
-  color: #1e293b;
+  color: #202124;
   margin-bottom: 16px;
 }
 
 .product-info p {
-  color: #64748b;
+  color: #5f6368;
   line-height: 1.7;
   margin-bottom: 24px;
 }
@@ -240,11 +254,11 @@ nav {
 }
 
 .product-tag {
-  background: #e0f2fe;
-  color: #0c4a6e;
+  background: rgba(26, 115, 232, 0.08);
+  color: #1a73e8;
   padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 12.8px;
+  border-radius: 16px;
+  font-size: 13px;
   font-weight: 500;
 }
 
@@ -252,21 +266,20 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #3b82f6;
+  color: #1a73e8;
   font-weight: 500;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .product-link:hover {
-  color: #1d4ed8;
+  color: #0d47a1;
   gap: 12px;
 }
 
 /* 关于我部分 */
 .about {
   padding: 80px 0;
-  background: #ffffff;
 }
 
 .profile {
@@ -287,32 +300,34 @@ nav {
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
-  border: 6px solid #ffffff;
+  border: 4px solid #ffffff;
 }
 
 .profile-info h3 {
   font-size: 32px;
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 600;
+  color: #202124;
   margin-bottom: 16px;
 }
 
 .profile-info p {
-  color: #64748b;
+  color: #5f6368;
   margin-bottom: 24px;
   line-height: 1.7;
 }
 
 .contact-info {
-  background: #ffffff;
-  padding: 24px;
+  background: #fff;
+  padding: 32px;
   border-radius: 12px;
+  border: 1px solid #dadce0;
   margin-bottom: 32px;
 }
 
 .contact-info p {
   margin-bottom: 8px;
   font-weight: 500;
+  color: #5f6368;
 }
 
 .social-links {
@@ -324,24 +339,26 @@ nav {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: #ffffff;
-  color: #64748b;
+  height: 48px;
+  border-radius: 48px;
+  padding: 0 24px;
+  background: #f8f9fa;
+  color: #5f6368;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  border: 1px solid #dadce0;
 }
 
 .social-links a:hover {
-  background: #3b82f6;
-  color: white;
+  background: #1a73e8;
+  color: #fff;
+  border-color: #1a73e8;
 }
 
 /* 页脚 */
 footer {
-  background: #1e293b;
-  color: #cbd5e1;
+  background: #202124;
+  color: #9aa0a6;
   padding: 32px 0;
   text-align: center;
 }
@@ -355,13 +372,13 @@ footer {
 }
 
 .footer-bottom a {
-  color: #cbd5e1;
+  color: #9aa0a6;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 .footer-bottom a:hover {
-  color: #3b82f6;
+  color: #1a73e8;
 }
 
 /* 响应式设计 */
