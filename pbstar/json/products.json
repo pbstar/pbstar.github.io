@@ -7,20 +7,6 @@
     "tags": ["后台管理", "微前端", "Vue3"]
   },
   {
-    "id": "2",
-    "name": "p-seamless-scroll",
-    "description": "p-seamless-scroll 是一个创建无缝滚动效果的 js 插件。它有着轻量且高效的特性，支持丰富的自定义配置选项，提供了一系列 API 方法以及事件监听功能。",
-    "link": "https://github.com/pbstar/p-seamless-scroll",
-    "tags": ["滚动插件", "轻量级", "JavaScript"]
-  },
-  {
-    "id": "3",
-    "name": "p-export-excel",
-    "description": "p-export-excel 是一个导出 Excel 的 js 插件，支持丰富的自定义配置选项，能够轻松生成 xlsx 和 csv 格式的数据报表。",
-    "link": "https://github.com/pbstar/p-export-excel",
-    "tags": ["Excel导出", "数据处理", "报表"]
-  },
-  {
     "id": "4",
     "name": "p-camera-h5",
     "description": "一款轻量级 H5 相机插件，支持拍照、录像、文字图片水印与高度样式定制化，适配现代浏览器，为 Web 应用提供原生级摄像头体验。",
@@ -40,5 +26,19 @@
     "description": "摸鱼看盘是一个优雅、极简的 VS Code 股票实时查看插件，让您在编码的同时轻松掌握股市动态。",
     "link": "https://github.com/pbstar/watch-stock",
     "tags": ["VSCode插件", "股票", "摸鱼"]
+  },
+  {
+    "id": "7",
+    "name": "feishu-wdh",
+    "description": "feishu-wdh 可一键将当前飞书文档经 AI 优化后导出为 Markdown，图片一并下载并打包为 ZIP，还可选生成前端研发任务清单。",
+    "link": "https://github.com/pbstar/feishu-wdh",
+    "tags": ["飞书文档", "AI优化", "Markdown导出"]
+  },
+  {
+    "id": "8",
+    "name": "cc-enhancer",
+    "description": "cc-enhancer 是 Claude Code 增强工具 VS Code 扩展，为 Claude Code 补上“右键加入上下文”菜单，让选中代码/文件一键注入 Claude 对话，替代繁琐的手动输入 @路径。",
+    "link": "https://github.com/pbstar/cc-enhancer",
+    "tags": ["VSCode插件", "Claude Code", "效率工具"]
   }
 ]
